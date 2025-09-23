@@ -66,7 +66,7 @@
     }
     hax-the-club:not(:defined) h1 {
       margin: 0 auto;
-      color: white;
+      color: black;
       font-size: 48px;
       display: inline-block;
       vertical-align: middle;
@@ -115,6 +115,13 @@
     example-htc-screen[sid="2"]{
       background-color: orange;
     }
+    example-htc-screen[sid="3"]{
+      background-color: gold;
+    }
+    example-htc-screen[sid="6"]{
+      background-color: blue;
+      color:#000000;
+    }
     .joker.gone [is-screen] {
       position: absolute;
       transition: all 1s ease-in-out;
@@ -156,12 +163,24 @@
       </h1>
       <p>How about a magic trick? <inline-audio source="./assets/voices/joker-website-gone.mp3" shiny accent-color="green">I took your liiiitle website and.... it's... gone..</inline-audio><strong>Ha hA Ha hA Ha</strong></p>
     </example-htc-screen>
+    <example-htc-screen title="Some..thing" sid="3">
+      <h1>
+        <span class="text">The Joker</span>
+      </h1>
+      <p>How about a magic trick? <inline-audio source="./assets/voices/joker-website-gone.mp3" shiny accent-color="green">Its haxxing time</inline-audio><strong>Ha hA Ha hA Ha</strong></p>
+    </example-htc-screen>
+    <whatever-screen title="Corporate Template" sid="6">
+      <h1>
+        <span class="text">Corporate Template</span>
+      </h1>
+    </whatever-screen>
   </hax-the-club>
   <script type="module">
     import "./hax-the-club.js";
     import "./lib/htc-main-screen.js";
     import "./lib/example-htc-screen.js";
     import "@haxtheweb/inline-audio/inline-audio.js";
+    import "./lib/tharun-epic-rrr-screen.js";
   </script>
 </body>
 </html>
