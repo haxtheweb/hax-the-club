@@ -205,10 +205,18 @@
         </p>
       </example-htc-screen>
       <wendy-screen title="Wendy's Screen" sid="3">
-        <h1>
-          <span class="text">The Thing </span>
-        </h1>
       </wendy-screen>
+      <my-card
+        image="assets/logo.jpg"
+        description="A collaborative web component project."
+        title="Canvas"
+        fancy
+      >
+        <p>
+          This card is <strong>fancy</strong>! Edit the slot content or use the
+          description attribute.
+        </p>
+      </my-card>
     </hax-the-club>
     <script type="module">
       import "./hax-the-club.js";
@@ -217,5 +225,6 @@
       import "@haxtheweb/inline-audio/inline-audio.js";
     </script>
     <script type="module" src="./lib/wendy-screen.js"></script>
+    <script type="module" src="./lib/my-card.js"></script>
   </body>
 </html>
