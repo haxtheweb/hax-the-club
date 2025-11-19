@@ -1,18 +1,24 @@
 import { LitElement, html, css } from "lit";
 
 export class WeeklyLessons extends LitElement {
-  static get tag() { return "weekly-lessons"; }
+  static get tag() {
+    return "weekly-lessons";
+  }
 
   static get properties() {
     return {
-      weeks: { type: Array }
+      weeks: { type: Array },
     };
   }
 
   constructor() {
     super();
     this.weeks = [
-      { week: 1, title: "Intro to Coding", desc: "Variables, console, basic JS" },
+      {
+        week: 1,
+        title: "Intro to Coding",
+        desc: "Variables, console, basic JS",
+      },
       { week: 2, title: "Control Flow", desc: "Conditions + loops" },
       { week: 3, title: "Functions", desc: "Reusability and parameters" },
       { week: 4, title: "Arrays & Objects", desc: "Data structures" },
@@ -21,59 +27,59 @@ export class WeeklyLessons extends LitElement {
   }
 
   static styles = css`
-    :host { display: block; padding: 2rem; }
-
-    .list {
-      display: grid;
-      grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
-      gap: 1rem;
+    :host {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
     }
 
     .card {
-      background: #ece2ff;
-      padding: 1.5rem;
-      border-radius: 12px;
-      color: #2a2347;
-      min-height: 160px;
-      transition: 0.25s ease;
+      width: 220px;
+      background: var(--highlight-color);
+      border-left: 1px solid var(--card-border-color);
+      flex-shrink: 0;
+      position: relative;
+      padding: 1rem 2rem;
     }
 
-    .card:hover {
-      transform: translateY(-4px);
+    /* Overlap all cards except the first */
+    .card:not(:first-child) {
+      margin-left: -80px;
     }
 
     .week {
-      font-size: 2.4rem;
+      background: var(--background-color);
+      color: var(--primary-color);
+      padding: 1rem 0;
+      font-size: 2.2rem;
       font-weight: 700;
-      color: #6e5ca6;
+      text-align: center;
+      margin-bottom: 1rem;
     }
 
     .title {
-      font-size: 1.1rem;
       font-weight: 700;
-      margin-top: 0.5rem;
+      color: #2d2347;
+      margin-bottom: 0.3rem;
     }
 
     .desc {
-      margin-top: 0.3rem;
-      opacity: 0.75;
+      color: #574a75;
       font-size: 0.9rem;
     }
   `;
 
   render() {
     return html`
-      <section class="list">
-        ${this.weeks.map(
-          (w) => html`
-            <div class="card">
-              <div class="week">${String(w.week).padStart(2, "0")}</div>
-              <div class="title">${w.title}</div>
-              <div class="desc">${w.desc}</div>
-            </div>
-          `
-        )}
-      </section>
+      ${this.weeks.map(
+        (w) => html`
+          <div class="card">
+            <div class="week">${String(w.week).padStart(2, "0")}</div>
+            <div class="title">${w.title}</div>
+            <div class="desc">${w.desc}</div>
+          </div>
+        `
+      )}
     `;
   }
 }

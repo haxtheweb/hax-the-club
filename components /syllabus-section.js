@@ -1,7 +1,9 @@
 import { LitElement, html, css } from "lit";
 
 export class SyllabusSection extends LitElement {
-  static get tag() { return "syllabus-section"; }
+  static get tag() {
+    return "syllabus-section";
+  }
 
   static get properties() {
     return {
@@ -16,60 +18,91 @@ export class SyllabusSection extends LitElement {
         icon: "⭐",
         title: "Overview",
         subtitle: "Location, Time, Objectives",
-        link: "/overview"
+        link: "/overview",
       },
       {
         icon: "◎",
         title: "Assessments",
         subtitle: "Grading Breakdown",
-        link: "/assessments"
+        link: "/assessments",
       },
       {
         icon: "⚑",
         title: "Policy",
         subtitle: "Academic Integrity",
-        link: "/policy"
+        link: "/policy",
       },
       {
         icon: "🔗",
         title: "Resources",
         subtitle: "Tools & Links",
-        link: "/resources"
-      }
+        link: "/resources",
+      },
     ];
   }
 
   static styles = css`
-    :host { display: block; padding: 2rem; }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
+      justify-content: center;
+      row-gap: 6em;
+      grid-template-columns: auto auto;
+      grid-template-rows: auto auto;
+      justify-items: center;
+      align-items: start;
+      column-gap: 6em;
+      row-gap: 3em;
+      flex-wrap: wrap;
+      align-content: start;
+      position: sticky;
+      top: 25%;
     }
+
     .card {
-      background: #111115;
-      padding: 1.5rem;
-      border-radius: 15px;
+      background: var(--card-bg-color);
+      padding-left: 2em;
+      padding-right: 2em;
+      padding-top: 2em;
+      padding-bottom: 2.5em;
+      border-radius: 16px;
       cursor: pointer;
-      color: white;
       transition: 0.25s;
+      text-decoration: none;
+      width: 16em;
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border-color);
+      z-index: 997;
     }
     .card:hover {
       transform: translateY(-4px);
-      background: #1a1a22;
     }
+
+    .card span {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      padding-bottom: 0.4rem;
+      align-items: center;
+      border-bottom: var(--border-bottom);
+    }
+
     .icon {
       font-size: 1.5rem;
-      margin-bottom: 0.5rem;
+      color: var(--primary-color);
     }
     .title {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       font-weight: 700;
+      color: var(--text-light);
     }
     .subtitle {
-      opacity: 0.6;
-      font-size: 0.85rem;
-      margin-top: 0.3rem;
+      font-size: 0.75rem;
+      margin-top: 0.8rem;
+      color: var(--text-muted);
+      background-color: var(--text-bg-color);
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      width: fit-content;
     }
   `;
 
@@ -79,8 +112,10 @@ export class SyllabusSection extends LitElement {
         ${this.items.map(
           (i) => html`
             <a class="card" href="${i.link}">
-              <div class="icon">${i.icon}</div>
-              <div class="title">${i.title}</div>
+              <span>
+                <div class="icon">${i.icon}</div>
+                <div class="title">${i.title}</div>
+              </span>
               <div class="subtitle">${i.subtitle}</div>
             </a>
           `
@@ -91,4 +126,3 @@ export class SyllabusSection extends LitElement {
 }
 
 customElements.define(SyllabusSection.tag, SyllabusSection);
-
